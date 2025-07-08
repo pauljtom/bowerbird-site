@@ -106,6 +106,7 @@ This is a full-stack portfolio website built with React and Express.js, featurin
 
 Changelog:
 - July 08, 2025. Initial setup
+- July 08, 2025. Updated for static hosting deployment - removed TanStack Query dependency and backend API calls, implemented mailto-based contact form for static hosting compatibility
 
 ## User Preferences
 

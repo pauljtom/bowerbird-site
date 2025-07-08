@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, MessageCircle, Send } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
@@ -13,30 +11,33 @@ export default function ContactSection() {
 
   const { toast } = useToast();
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: typeof formData) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
-    },
-    onError: (error) => {
-      toast({
-        title: "Failed to send message",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
-  });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    contactMutation.mutate(formData);
+    
+    // Simple form validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Please fill in all fields",
+        description: "All fields are required to send a message.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Create mailto link for static hosting
+    const subject = encodeURIComponent(`Portfolio Contact: ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    const mailtoLink = `mailto:john.developer@email.com?subject=${subject}&body=${body}`;
+    
+    window.location.href = mailtoLink;
+    
+    toast({
+      title: "Opening email client",
+      description: "Your default email client will open with the message pre-filled.",
+    });
+    
+    // Clear form
+    setFormData({ name: "", email: "", message: "" });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -176,11 +177,10 @@ export default function ContactSection() {
                 </div>
                 <button
                   type="submit"
-                  disabled={contactMutation.isPending}
-                  className="w-full bg-primary text-white py-4 px-6 rounded-xl hover:bg-blue-600 transition-colors duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full bg-primary text-white py-4 px-6 rounded-xl hover:bg-blue-600 transition-colors duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   <Send className="w-5 h-5 mr-2 inline" />
-                  {contactMutation.isPending ? "Sending..." : "Send Message"}
+                  Send Message
                 </button>
               </form>
             </div>
