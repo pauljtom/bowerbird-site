@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { GiDeer } from "react-icons/gi";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,10 +25,10 @@ export default function Navigation() {
 
   const navItems = [
     { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
+    // { id: "about", label: "About" },
+    // { id: "skills", label: "Skills" },
+    // { id: "projects", label: "Projects" },
+    // { id: "contact", label: "Contact" },
   ];
 
   return (
@@ -36,8 +37,12 @@ export default function Navigation() {
     } border-b border-slate-200`}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="font-bold text-xl text-slate-900">
-            John.dev
+          <div className="flex flex-row gap-x-3 justify-center items-center">
+            <div className="font-bold text-xl text-[#333333]">
+              Bowerbird
+            </div>
+            <GiDeer size={32} color="#333333"/>
+
           </div>
           
           {/* Desktop Navigation */}

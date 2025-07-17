@@ -1,4 +1,6 @@
 import { Code, Mail } from "lucide-react";
+import { AiFillApi } from "react-icons/ai";
+import { GiDeer } from "react-icons/gi";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -9,14 +11,19 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 pt-20">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-[#dddddd] pt-20">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* <div className="grid md:grid-cols-2 gap-12 items-center"> */}
+          <div className="w-full flex  justify-center items-center">
+            <div color="#333333" className="w-full flex  max-sm:flex-col max-sm:gap-y-3 flex-row text-3xl gap-x-3 text-[#333333] text-center justify-center items-center ">
+              Rome was not built in a day... under construction
+            <GiDeer size={96} color="#333333"/>
+            </div>
             {/* Hero Content */}
-            <div className="text-center md:text-left animate-fade-in">
+            {/* <div className="text-center md:text-left animate-fade-in">
               <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-                Hi, I'm <span className="text-primary">John</span>
+                We're <span className="text-primary">Bowerbird</span>
               </h1>
               <h2 className="text-2xl md:text-3xl text-slate-600 mb-6 font-medium">
                 Full Stack Developer
@@ -41,19 +48,19 @@ export default function HeroSection() {
                   Get In Touch
                 </button>
               </div>
-            </div>
+            </div> */}
             
             {/* Hero Image */}
-            <div className="relative animate-slide-up">
+            {/* <div className="relative animate-slide-up">
               <div className="relative z-10 animate-float">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=500" 
+                <img
+                  src ="https://i.postimg.cc/MZMwKpNX/bowerbird-logo-black.png" 
                   alt="Professional developer portrait" 
-                  className="w-80 h-80 rounded-full object-cover shadow-2xl mx-auto border-4 border-white"
+                  className="w-80 h-80 rounded-full object-cover shadow-2xl mx-auto border-4 "
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl -z-10"></div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
