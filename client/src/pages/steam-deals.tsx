@@ -12,12 +12,12 @@ export default function SteamDeals() {
     <>
       <Navigation />
       <Deals />
-      <HeroSection />
-      <AboutSection />
+      {/* <HeroSection /> */}
+      {/* <AboutSection />
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

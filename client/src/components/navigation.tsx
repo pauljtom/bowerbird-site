@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { GiDeer } from "react-icons/gi";
-import { NavLink } from "react-router";
-import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'wouter';
 
 export default function Navigation() {
-  // const navigate = useNavigate();
   const [, setLocation] = useLocation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,8 +69,8 @@ export default function Navigation() {
   }
 
   const navItems = [
-    { id: "", label: "Home" },
-    { id: "deals", label: "Deals" },
+    { id: "", label: "home" },
+    { id: "projects", label: "projects" },
     // { id: "about", label: "About" },
     // { id: "skills", label: "Skills" },
     // { id: "projects", label: "Projects" },
@@ -93,11 +90,11 @@ export default function Navigation() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? "bg-white/95 backdrop-blur-md" : "bg-[#4c392e] backdrop-blur-md"
+      isScrolled ? "bg-white/95 backdrop-blur-md" : "bg-[#2A2B2A] backdrop-blur-md"
     }`}>
-      <div className="container mx-auto px-4 py-4 font-code">
+      <div className="container mx-24 px-4 py-4 font-code">
         <div className="flex items-center justify-between">
-          <div className="flex flex-row gap-x-1 justify-center items-center font-medium text-md text-[#ffffff]">
+          <div className={`flex flex-row gap-x-1 justify-center items-center font-medium text-md ${isScrolled ? 'text-black' : 'text-[#ffffff]'}`}>
             <div className="">
               bowerbird
             </div>
@@ -111,7 +108,7 @@ export default function Navigation() {
               <button
                 key={item.id}
                 onClick={() => navigateToPage(item.id)}
-                className="text-[#ffffff] text-sm hover:text-primary transition-colors duration-200"
+                className={` ${isScrolled ? 'text-black' : 'text-[#ffffff]'} text-sm hover:text-primary transition-colors duration-200`}
               >
                 {item.label}
               </button>

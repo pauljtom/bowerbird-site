@@ -1,11 +1,58 @@
-import { Code, Mail } from "lucide-react";
+import { Code, Mail, ExternalLink, Github } from "lucide-react";
 import { AiFillApi } from "react-icons/ai";
 import { GiDeer } from "react-icons/gi";
 import { Button } from "./ui/button";
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
 
-export default function HeroSection() {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  tech: string[];
+  link?: string;
+  github?: string;
+}
+
+function ProjectCard({ title, description, tech, link, github }: ProjectCardProps) {
+  return (
+    <div className="border border-[#25de34] bg-[#1a1a1a] p-6 rounded-lg hover:bg-[#252525] transition-colors duration-200">
+      <h3 className="text-xl font-semibold text-[#25de34] mb-3">{title}</h3>
+      <p className="text-[#25de34] opacity-80 mb-4 leading-relaxed">{description}</p>
+      
+      <div className="flex flex-wrap gap-2 mb-4">
+        {tech.map((item, index) => (
+          <span 
+            key={index}
+            className="px-2 py-1 text-xs border border-[#25de34] text-[#25de34] rounded bg-transparent"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+      
+      <div className="flex gap-3">
+        {link && (
+          <Link href={link}>
+            <Button size="sm" className="bg-[#25de34] text-[#181516] hover:bg-[#1fb82a] transition-colors">
+              <ExternalLink className="w-4 h-4 mr-1" />
+              View Project
+            </Button>
+          </Link>
+        )}
+        {github && (
+          <a href={github} target="_blank" rel="noopener noreferrer">
+            <Button size="sm" variant="outline" className="border-[#25de34] text-[#25de34] hover:bg-[#25de34] hover:text-[#181516]">
+              <Github className="w-4 h-4 mr-1" />
+              Code
+            </Button>
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default function ProjectsPage() {
 
   const cursor = useCursorBlink(500);
   const cityscapeArt = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⡄\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇\n⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇";
@@ -47,31 +94,17 @@ export default function HeroSection() {
           <div className="w-full flex flex-col gap-8 items-start justify-start">
             
             <div className="flex flex-col sm:flex-row items-center gap-3 text-3xl">
-              <span>Hello friend :)</span>
-            </div>
-
-            <div className="tracking-wide leading-5">
-              <p>⠀⠀⠀⠀⠀⣄⡀</p>
-              <p>⠀⠀⠀⠀⠀⢿⣧⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
-              <p>⠀⠀⠀⠀⠀⢸⣿⣇⠀⢸⣿⣿⣦⣤⣄⣀⣴⣿⣷⠀⠀</p>
-              <p>⠀⠀⠀⠀⠀⢸⣿⣿⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀</p>
-              <p>⠀⠀⠀⠀⢀⣼⣿⣿⣧⣿⣿⣿⣿⡟⣿⣿⣿⠻⣿⠂⡀</p>
-              <p>⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣧⣿⣿⣿⣦⣿⣏⠁</p>
-              <p>⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀</p>
-              <p>⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀</p>
-              <p>⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀</p>
-              <p>⢠⣾⣿⡿⠋⠀⠈⠙⣿⣿⣿⡿⣿⡿⠿⠟⢿⣿⣿⣷⣄</p>
-              <p>⠈⠿⡿⠃⠀⠀⠀  ⣿⣿⣿⣧⠀⠀⠀⠀⠀ ⠉⠻⣿⡿  </p>
-              <p>⠀⠀⠀⠀⠀⠀⠀  ⠈⢿⡿⠟⠃⠀⠀⠀⠀⠀⠀⠀  ⠈⠀⠀</p>
+              <span>Projects:</span>
             </div>
 
 
-
-            <div className="flex flex-col items-start gap-4">
-              <p>Welcome to my personal page</p>
-              <div className="flex flex-row gap-x-1">
-              <p>Here you can find out a bit more about me, what I'm hyperfixating about at the moment, and what I've worked on {cursor}</p>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                <ProjectCard 
+                    title="Steam Deals Checker"
+                    description="A web application that tracks and displays current Steam game deals, helping users find the best discounts on games."
+                    tech={["React", "TypeScript", "Steam API"]}
+                    link="/deals"
+                />
             </div>
 
           </div>
