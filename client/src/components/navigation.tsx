@@ -92,7 +92,7 @@ export default function Navigation() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "bg-white/95 backdrop-blur-md" : "bg-[#2A2B2A] backdrop-blur-md"
     }`}>
-      <div className="container mx-24 px-4 py-4 font-code">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 font-code">
         <div className="flex items-center justify-between">
           <div className={`flex flex-row gap-x-1 justify-center items-center font-medium text-md ${isScrolled ? 'text-black' : 'text-[#ffffff]'}`}>
             <div className="">
@@ -118,12 +118,18 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors duration-200"
+            className={`md:hidden p-2 rounded-lg transition-colors duration-200 ${
+              isScrolled ? 'hover:bg-slate-100' : 'hover:bg-white/10'
+            }`}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-slate-700" />
+              <X className={`h-6 w-6 ${
+                isScrolled ? 'text-slate-700' : 'text-white'
+              }`} />
             ) : (
-              <Menu className="h-6 w-6 text-slate-700" />
+              <Menu className={`h-6 w-6 ${
+                isScrolled ? 'text-slate-700' : 'text-white'
+              }`} />
             )}
           </button>
         </div>
@@ -135,8 +141,13 @@ export default function Navigation() {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => navigateToPage(item.id)}
-                  className="text-slate-600 hover:text-primary transition-colors duration-200 font-medium py-2 text-left"
+                  onClick={() => {
+                    navigateToPage(item.id);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`${
+                    isScrolled ? 'text-slate-600 hover:text-primary' : 'text-white hover:text-[#25de34]'
+                  } transition-colors duration-200 font-medium py-2 text-left`}
                 >
                   {item.label}
                 </button>

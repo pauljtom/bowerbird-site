@@ -42,35 +42,39 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="min-h-screen font-code flex items-start justify-start bg-[#181516] text-[#25de34] pt-20">
-      <div className="mx-24 px-4 py-16">
-        <div className="max-w-6xl">
-          <div className="w-full flex flex-col gap-8 items-start justify-start">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+        <div className="w-full">
+          <div className="w-full flex flex-col gap-6 sm:gap-8 items-start justify-start">
             
-            <div className="flex flex-col sm:flex-row items-center gap-3 text-3xl">
-              <span>Hello friend :)</span>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl">Hello friend :)</h1>
             </div>
 
-            <div className="tracking-wide leading-5">
-              <p>⠀⠀⠀⠀⠀⣄⡀</p>
-              <p>⠀⠀⠀⠀⠀⢿⣧⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
-              <p>⠀⠀⠀⠀⠀⢸⣿⣇⠀⢸⣿⣿⣦⣤⣄⣀⣴⣿⣷⠀⠀</p>
-              <p>⠀⠀⠀⠀⠀⢸⣿⣿⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀</p>
-              <p>⠀⠀⠀⠀⢀⣼⣿⣿⣧⣿⣿⣿⣿⡟⣿⣿⣿⠻⣿⠂⡀</p>
-              <p>⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣧⣿⣿⣿⣦⣿⣏⠁</p>
-              <p>⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀</p>
-              <p>⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀</p>
-              <p>⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀</p>
-              <p>⢠⣾⣿⡿⠋⠀⠈⠙⣿⣿⣿⡿⣿⡿⠿⠟⢿⣿⣿⣷⣄</p>
-              <p>⠈⠿⡿⠃⠀⠀⠀  ⣿⣿⣿⣧⠀⠀⠀⠀⠀ ⠉⠻⣿⡿  </p>
-              <p>⠀⠀⠀⠀⠀⠀⠀  ⠈⢿⡿⠟⠃⠀⠀⠀⠀⠀⠀⠀  ⠈⠀⠀</p>
+            <div className="tracking-wide leading-4 sm:leading-5 text-xs sm:text-sm overflow-x-auto">
+              <div className="min-w-max">
+                <p>⠀⠀⠀⠀⠀⣄⡀</p>
+                <p>⠀⠀⠀⠀⠀⢿⣧⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
+                <p>⠀⠀⠀⠀⠀⢸⣿⣇⠀⢸⣿⣿⣦⣤⣄⣀⣴⣿⣷⠀⠀</p>
+                <p>⠀⠀⠀⠀⠀⢸⣿⣿⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀</p>
+                <p>⠀⠀⠀⠀⢀⣼⣿⣿⣧⣿⣿⣿⣿⡟⣿⣿⣿⠻⣿⠂⡀</p>
+                <p>⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣧⣿⣿⣿⣦⣿⣏⠁</p>
+                <p>⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀</p>
+                <p>⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀</p>
+                <p>⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀</p>
+                <p>⢠⣾⣿⡿⠋⠀⠈⠙⣿⣿⣿⡿⣿⡿⠿⠟⢿⣿⣿⣷⣄</p>
+                <p>⠈⠿⡿⠃⠀⠀⠀  ⣿⣿⣿⣧⠀⠀⠀⠀⠀ ⠉⠻⣿⡿  </p>
+                <p>⠀⠀⠀⠀⠀⠀⠀  ⠈⢿⡿⠟⠃⠀⠀⠀⠀⠀⠀⠀  ⠈⠀⠀</p>
+              </div>
             </div>
 
 
 
             <div className="flex flex-col items-start gap-4">
-              <p>Welcome to my personal page</p>
-              <div className="flex flex-row gap-x-1">
-              <p>Here you can find out a bit more about me, what I'm hyperfixating about at the moment, and what I've worked on {cursor}</p>
+              <p className="text-sm sm:text-base">Welcome to my personal page</p>
+              <div className="flex flex-col sm:flex-row gap-x-1">
+                <p className="text-sm sm:text-base leading-relaxed">
+                  Here you can find out a bit more about me, what I'm hyperfixating about at the moment, and what I've worked on {cursor}
+                </p>
               </div>
             </div>
 

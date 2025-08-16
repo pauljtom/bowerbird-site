@@ -15,9 +15,9 @@ interface ProjectCardProps {
 
 function ProjectCard({ title, description, tech, link, github }: ProjectCardProps) {
   return (
-    <div className="border border-[#25de34] bg-[#1a1a1a] p-6 rounded-lg hover:bg-[#252525] transition-colors duration-200">
-      <h3 className="text-xl font-semibold text-[#25de34] mb-3">{title}</h3>
-      <p className="text-[#25de34] opacity-80 mb-4 leading-relaxed">{description}</p>
+    <div className="border border-[#25de34] bg-[#1a1a1a] p-4 sm:p-6 rounded-lg hover:bg-[#252525] transition-colors duration-200">
+      <h3 className="text-lg sm:text-xl font-semibold text-[#25de34] mb-3">{title}</h3>
+      <p className="text-[#25de34] opacity-80 mb-4 leading-relaxed text-sm sm:text-base">{description}</p>
       
       <div className="flex flex-wrap gap-2 mb-4">
         {tech.map((item, index) => (
@@ -30,10 +30,10 @@ function ProjectCard({ title, description, tech, link, github }: ProjectCardProp
         ))}
       </div>
       
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
         {link && (
           <Link href={link}>
-            <Button size="sm" className="bg-[#25de34] text-[#181516] hover:bg-[#1fb82a] transition-colors">
+            <Button size="sm" className="bg-[#25de34] text-[#181516] hover:bg-[#1fb82a] transition-colors w-full sm:w-auto">
               <ExternalLink className="w-4 h-4 mr-1" />
               View Project
             </Button>
@@ -41,7 +41,7 @@ function ProjectCard({ title, description, tech, link, github }: ProjectCardProp
         )}
         {github && (
           <a href={github} target="_blank" rel="noopener noreferrer">
-            <Button size="sm" variant="outline" className="border-[#25de34] text-[#25de34] hover:bg-[#25de34] hover:text-[#181516]">
+            <Button size="sm" variant="outline" className="border-[#25de34] text-[#25de34] hover:bg-[#25de34] hover:text-[#181516] w-full sm:w-auto">
               <Github className="w-4 h-4 mr-1" />
               Code
             </Button>
@@ -89,16 +89,15 @@ export default function ProjectsPage() {
 
   return (
     <section id="home" className="min-h-screen font-code flex items-start justify-start bg-[#181516] text-[#25de34] pt-20">
-      <div className="mx-24 px-4 py-16">
-        <div className="max-w-6xl">
-          <div className="w-full flex flex-col gap-8 items-start justify-start">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+        <div className="w-full">
+          <div className="w-full flex flex-col gap-6 sm:gap-8 items-start justify-start">
             
-            <div className="flex flex-col sm:flex-row items-center gap-3 text-3xl">
-              <span>Projects:</span>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">Projects:</h1>
             </div>
 
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full">
                 <ProjectCard 
                     title="Steam Deals Checker"
                     description="A web application that tracks and displays current Steam game deals, helping users find the best discounts on games."
