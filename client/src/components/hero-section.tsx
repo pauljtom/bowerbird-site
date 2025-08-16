@@ -19,15 +19,19 @@ export default function HeroSection() {
           <div className="w-full flex flex-col gap-8 items-center justify-center text-center">
             
             <div className="flex flex-col sm:flex-row items-center gap-3 text-3xl text-[#333333]">
-              <span>Rome was not built in a day... under construction</span>
-              <GiDeer size={96} color="#333333" />
+              <span>Hello friend :)</span>
             </div>
 
             <div className="flex flex-col items-center gap-4">
               <h2 className="text-xl font-medium text-gray-800">Click the button below to check out the top 10 Steam deals</h2>
-              <Link to="/deals">
-                <Button className="text-lg px-6 py-2">HERE</Button>
-              </Link>
+              <div className="flex flex-row gap-x-4">
+                <Link to="/deals">
+                  <Button className="text-lg px-6 py-2">Here</Button>
+                </Link>
+                <Link to="/landing">
+                  <Button className="text-lg px-6 py-2">Landing</Button>
+                </Link>
+              </div>
             </div>
 
           </div>

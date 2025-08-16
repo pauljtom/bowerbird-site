@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { GiDeer } from "react-icons/gi";
+import { NavLink } from "react-router";
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 
 export default function Navigation() {
+  // const navigate = useNavigate();
+  const [, setLocation] = useLocation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,8 +29,14 @@ export default function Navigation() {
     }
   };
 
+  const navigateToPage = (pageId: string) => {
+    const page: string = '/' + pageId;
+    setLocation(page);
+  }
+
   const navItems = [
-    { id: "home", label: "Home" },
+    { id: "", label: "Home" },
+    { id: "deals", label: "Deals" },
     // { id: "about", label: "About" },
     // { id: "skills", label: "Skills" },
     // { id: "projects", label: "Projects" },
@@ -50,7 +62,7 @@ export default function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => navigateToPage(item.id)}
                 className="text-slate-600 hover:text-primary transition-colors duration-200 font-medium"
               >
                 {item.label}
@@ -78,7 +90,7 @@ export default function Navigation() {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => navigateToPage(item.id)}
                   className="text-slate-600 hover:text-primary transition-colors duration-200 font-medium py-2 text-left"
                 >
                   {item.label}
