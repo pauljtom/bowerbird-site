@@ -26,6 +26,14 @@
   --grey: hsl(0, 0%, 20%);
 }
 
+  .font-courier {
+    font-family: 'Courier Prime', monospace;
+  }
+
+  .font-code {
+    font-family: 'Google Sans Code', monospace;
+  }
+
 .dark {
   --background: hsl(222, 84%, 5%);
   --foreground: hsl(210, 40%, 98%);

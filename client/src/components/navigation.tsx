@@ -11,6 +11,9 @@ export default function Navigation() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const cursor = useCursorBlink(500)
+
+  let showCursor: boolean = false;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,40 @@ export default function Navigation() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+
+  function useTimer(initialTime = 0) {
+    const [time, setTime] = useState(initialTime);
+    const [isActive, setIsActive] = useState(false);
+
+    useEffect(() => {
+      let interval: NodeJS.Timeout | undefined;
+      if (isActive) {
+        interval = setInterval(() => {
+          setTime(time => time + 1);
+        }, 1000);
+      } else if (!isActive && time !== 0) {
+        clearInterval(interval);
+      }
+      return () => clearInterval(interval);
+    }, [isActive, time]);
+
+    return { time, isActive, setIsActive, setTime };
+  }
+
+  function useCursorBlink(interval = 500) {
+    const [showCursor, setShowCursor] = useState(true);
+
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setShowCursor(prev => !prev);
+      }, interval);
+
+      return () => clearInterval(timer);
+    }, [interval]);
+
+    return showCursor ? "_" : "";
+  }
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -43,17 +80,28 @@ export default function Navigation() {
     // { id: "contact", label: "Contact" },
   ];
 
+  const getCursor = () => {
+    const cursor = "_";
+    if (showCursor) {
+      showCursor = false;
+      return cursor
+    } else {
+      showCursor = true;
+      return "";
+    }
+  }
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? "bg-white/95 backdrop-blur-md" : "bg-white/80 backdrop-blur-md"
-    } border-b border-slate-200`}>
-      <div className="container mx-auto px-4 py-4">
+      isScrolled ? "bg-white/95 backdrop-blur-md" : "bg-[#4c392e] backdrop-blur-md"
+    }`}>
+      <div className="container mx-auto px-4 py-4 font-code">
         <div className="flex items-center justify-between">
-          <div className="flex flex-row gap-x-3 justify-center items-center">
-            <div className="font-bold text-xl text-[#333333]">
-              Bowerbird
+          <div className="flex flex-row gap-x-1 justify-center items-center font-medium text-md text-[#ffffff]">
+            <div className="">
+              bowerbird
             </div>
-            <GiDeer size={32} color="#333333"/>
+            <div>{cursor}</div>
 
           </div>
           
@@ -63,7 +111,7 @@ export default function Navigation() {
               <button
                 key={item.id}
                 onClick={() => navigateToPage(item.id)}
-                className="text-slate-600 hover:text-primary transition-colors duration-200 font-medium"
+                className="text-[#ffffff] text-sm hover:text-primary transition-colors duration-200"
               >
                 {item.label}
               </button>

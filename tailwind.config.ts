@@ -3,6 +3,10 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
+  fontFamily: {
+    'courier': ['Courier Prime', 'monospace'],
+    'code' : [ 'Google Sans Code', 'monospace'],
+    },
   theme: {
     extend: {
       borderRadius: {
