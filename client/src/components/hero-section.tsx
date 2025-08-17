@@ -46,11 +46,7 @@ export default function HeroSection() {
         <div className="w-full">
           <div className="w-full flex flex-col gap-6 sm:gap-8 items-start justify-start">
             
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl">Hello friend :)</h1>
-            </div>
-
-            <div className="tracking-wide leading-4 sm:leading-5 text-xs sm:text-sm overflow-x-auto">
+            {/* <div className="tracking-wide leading-4 sm:leading-5 text-xs sm:text-sm overflow-x-auto">
               <div className="min-w-max">
                 <p>⠀⠀⠀⠀⠀⣄⡀</p>
                 <p>⠀⠀⠀⠀⠀⢿⣧⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
@@ -65,15 +61,22 @@ export default function HeroSection() {
                 <p>⠈⠿⡿⠃⠀⠀⠀  ⣿⣿⣿⣧⠀⠀⠀⠀⠀ ⠉⠻⣿⡿  </p>
                 <p>⠀⠀⠀⠀⠀⠀⠀  ⠈⢿⡿⠟⠃⠀⠀⠀⠀⠀⠀⠀  ⠈⠀⠀</p>
               </div>
+            </div> */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl">Hello_</h1>
             </div>
 
 
 
+
             <div className="flex flex-col items-start gap-4">
-              <p className="text-sm sm:text-base">Welcome to my personal page</p>
+              <p className="text-sm sm:text-base">Welcome to Bowerbird <span className="text-3xl">𓅪</span></p>
               <div className="flex flex-col sm:flex-row gap-x-1">
-                <p className="text-sm sm:text-base leading-relaxed">
-                  Here you can find out a bit more about me, what I'm hyperfixating about at the moment, and what I've worked on {cursor}
+                <p className="text-sm sm:text-base leading-relaxed mt-2">
+                  Here you can find out:<br/>
+                  {'> '}a bit more about me<br/>
+                  {'> '}my thoughts at the moment<br/>
+                  {'> '}what I'm working on and some of my past projects
                 </p>
               </div>
             </div>
