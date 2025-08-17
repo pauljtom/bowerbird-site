@@ -96,9 +96,9 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           <div className={`flex flex-row gap-x-1 justify-center items-center font-medium text-md ${isScrolled ? 'text-black' : 'text-[#ffffff]'}`}>
             <div className="">
-              bowerbird
+              bowerbird_
             </div>
-            <div>{cursor}</div>
+            {/* <div>{cursor}</div> */}
 
           </div>
           
