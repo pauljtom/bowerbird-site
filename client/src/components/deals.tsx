@@ -14,6 +14,7 @@ interface Deal {
   thumb: string;
   savings: string;
   steamAppID: string;
+  steamRatingPercent: string | number;
 }
 
 
@@ -26,7 +27,19 @@ export default function Deals() {
       try {
         const res = await fetch("https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15");
         const data = await res.json();
-        setDeals(data.slice(0, 10)); // Top 10 deals
+
+        let splitData = data.slice(0, 10);
+        splitData.forEach((deal: any) => {
+          deal.steamRatingPercent = JSON.parse(deal.steamRatingPercent);
+        });
+
+
+        splitData = splitData.sort((a: any, b: any) => b.steamRatingPercent - a.steamRatingPercent);
+
+        const filteredData = splitData.sort((a: any, b: any) => b.steamRatingPercent - a.steamRatingPercent);
+
+
+        setDeals(filteredData); // Top 10 deals
       } catch (err) {
         console.error("Failed to fetch deals:", err);
       }
@@ -52,6 +65,7 @@ export default function Deals() {
                 <p className="text-lg font-bold text-green-600">{formatPriceToZAR(deal.salePrice)}</p>
                 <p className="text-xs font-semibold text-red-500">{parseInt(deal.savings).toFixed(0)}% off</p>
                 <p className="text-xs font-semibold">Click <a className="text-blue-500 underline" target="_blank" href={`https://store.steampowered.com/app/${deal.steamAppID}/`}>here</a> to go to the Steam page</p>
+                <p className="mt-4 border border-[#25de34] rounded-full w-fit px-4 py-1 flex items-centertext-xs font-semibold text-[#25de34]">{deal.steamRatingPercent}% rating</p>
               </div>
             ))}
           </div>

@@ -1,21 +1,28 @@
-// utils/currencyFormatter.ts
-export const formatPriceToZAR = (price: number | string): string => {
-//   if (typeof price !== 'number' || isNaN(price)) {
-  if (typeof price == 'string') {
-    price = parseInt(price);
+export const formatPriceToZAR = (price: number | string, conversionRate: number = 17.63): string => {
+  if (price === null || price === undefined || price === '') {
+    return '';
+  }
 
-    price = price * 17.63;
-    // You might want to throw an error, log a warning, or return a specific string like "N/A"
-    // depending on how you want to handle invalid input.
-    // For now, returning an empty string as per your original code.
-    } else if (isNaN(price)) {
+  let numericPrice: number;
+  
+  if (typeof price === 'string') {
+    numericPrice = parseFloat(price);
+    if (isNaN(numericPrice)) {
       return '';
     }
+  } else {
+    numericPrice = price;
+    if (isNaN(numericPrice)) {
+      return '';
+    }
+  }
+
+  const convertedPrice = numericPrice * conversionRate;
 
   return new Intl.NumberFormat('en-ZA', {
     style: 'currency',
     currency: 'ZAR',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(price);
+  }).format(convertedPrice);
 };
